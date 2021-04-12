@@ -6,7 +6,7 @@ Finally, enter the file name to be compared with the .txt extension to get the a
 
 The program receives input and outputs as follows;
 
-![](admin.programrun.png)
+![](programrun.png)
 
 Welcome to the spell corrector
 Please enter the dictionary file: corpus.txt
