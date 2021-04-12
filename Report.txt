@@ -1,0 +1,27 @@
+# edits2 always keeps the first letter unchanged
+def edits2(word):
+    newWord = word[1:]
+    firstWord = word[0]
+    letters = 'abcdefghijklmnopqrstuvwxyz'
+    splits = [(firstWord + newWord[:i], newWord[i:]) for i in range(len(word) + 1)]
+    deletes = [L + R[1:] for L, R in splits if R]
+    transposes = [L + R[1] + R[0] + R[2:] for L, R in splits if len(R) > 1]
+    replaces = [L + c + R[1:] for L, R in splits if R for c in letters]
+    inserts = [L + c + R for L, R in splits for c in letters]
+    return set(deletes + transposes + replaces + inserts)
+
+
+When splitting the word with the code above, it does not split the first letter and does not do any editing on it.
+Normally,with edits1,the word "banana" is taken as the correction for both words. However, when we write danana with 
+the edits2 function, the correct result cannot be obtained.
+
+
+print(correction("bannana")) >>> banana
+
+print(correction("danana"))  >>> danana
+
+
+Accuracy score is:  0.7291666666666666 for version1
+
+Accuracy score is:  0.6979166666666666 for version2 (assuming that the first letter of a word is always spelled correctly)
+
